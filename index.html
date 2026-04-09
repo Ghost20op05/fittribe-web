@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph tags — these create the WhatsApp/Telegram preview card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FitTribe" />
+  <meta property="og:title" content="Join my FitTribe group!" />
+  <meta property="og:description" content="Stay consistent with your fitness goals. Join your accountability group on FitTribe." />
+  <meta property="og:image" content="https://fittribe.vercel.app/og-image.png" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Join my FitTribe group!" />
+  <meta name="twitter:description" content="Stay consistent with your fitness goals. Join your accountability group on FitTribe." />
+
+  <title>FitTribe — Join Group</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0D0D0D;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 400px;
+    }
+    .logo { font-size: 64px; margin-bottom: 16px; }
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: #A0A0A0;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .code-box {
+      background: #1A1A1A;
+      border: 1px solid #2A2A2A;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .code-label {
+      font-size: 12px;
+      color: #A0A0A0;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .code {
+      font-size: 32px;
+      font-weight: 700;
+      color: #6C47FF;
+      letter-spacing: 4px;
+    }
+    .steps {
+      text-align: left;
+      background: #1A1A1A;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    .steps-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #A0A0A0;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: #6C47FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .footer {
+      font-size: 13px;
+      color: #555555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">💪</div>
+    <h1 class="title">You're invited!</h1>
+    <p class="subtitle">
+      Your friend wants you to join their<br />
+      accountability group on FitTribe.
+    </p>
+
+    <div class="code-box" id="codeBox">
+      <div class="code-label">Invite Code</div>
+      <div class="code" id="inviteCode">Loading...</div>
+    </div>
+
+    <div class="steps">
+      <div class="steps-title">How to join</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <span>Download FitTribe from the App Store or Play Store</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <span>Create your account</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span>Tap <strong>Join Group</strong> and enter the code above</span>
+      </div>
+    </div>
+
+    <p class="footer">FitTribe — Stay consistent together</p>
+  </div>
+
+  <script>
+    // Get invite code from URL
+    // URL format: fittribe.vercel.app/join/CODE
+    const path = window.location.pathname
+    const parts = path.split('/')
+    const code = parts[parts.length - 1]
+
+    if (code && code !== 'join' && code.length > 3) {
+      document.getElementById('inviteCode').textContent = code
+      // Update og:title dynamically for sharing
+      document.title = 'Join my FitTribe group — Code: ' + code
+    } else {
+      document.getElementById('inviteCode').textContent = 'Open app to get code'
+    }
+  </script>
+</body>
+</html>
